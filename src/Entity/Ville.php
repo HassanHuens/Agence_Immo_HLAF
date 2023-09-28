@@ -6,14 +6,14 @@ class Ville
 	private ?int $insee;
 	private ?string $nom;
     private ?int $codePostal;
-	public function __construct( ?int $insee = null, ?string $nom = null ,?int $codePostal = null)
+	public function __construct( ?int $insee, string $nom = null ,int $codePostal = null)
 	{
 		$this->insee = $insee;
 		$this->nom = $nom;
         $this->codePostal = $codePostal;
 	}
 
-	public function getInsee(): ?int
+	public function getInsee(): int
 	{
 		return $this->insee;
 	}
@@ -21,7 +21,7 @@ class Ville
 	{
 		$this->insee = $insee;
 	}
-	public function getNom(): ?string
+	public function getNom(): string
 	{
 		return $this->nom;
 	}
@@ -29,7 +29,7 @@ class Ville
 	{
 		$this->nom = $nom;
 	}
-    public function getCodePostal(): ?int
+    public function getCodePostal(): int
 	{
 		return $this->codePostal;
 	}

@@ -1,7 +1,5 @@
 <?php
 namespace App\Entity;
-use App\Entity\GestionProprio;
-use App\Entity\Ville;
 
 class Proprietaire
 {
@@ -15,7 +13,7 @@ class Proprietaire
     private ?GestionProprio $laGestionProprio;
 	private ?Ville $laVille;
 
-	public function __construct(?int $id = null,?string $nom = null,?string $prenom = null,?string $rue = null,?string $email = null,?string $telephone = null,?GestionProprio $laGestionProprio = null,?Ville $laVille = null)
+	public function __construct(?int $id,string $nom,string $prenom,string $rue,string $email,?string $telephone,GestionProprio $laGestionProprio,Ville $laVille)
 	{
 		$this->id = $id;
 		$this->nom = $nom;
@@ -54,6 +52,18 @@ class Proprietaire
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set the value of nom
+     *
+     * @return  self
+     */ 
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
     }
 
     /**

@@ -16,7 +16,7 @@ class ProfilRepository extends Repository
         $lesProfils = array();
         // on récupère l'objet qui permet de travailler avec la base de données
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT id, libelle FROM immo_profil order by libelle");
+        $req = $db->prepare("SELECT id,libelle FROM immo_profil order by libelle");
         $req->execute();
         $lesEnregs = $req->fetchAll();
         foreach ($lesEnregs  as $enreg) {

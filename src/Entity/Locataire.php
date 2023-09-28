@@ -1,10 +1,8 @@
 <?php
 namespace App\Entity;
-
-use App\Entity\Ville;
 use App\Entity\Impression;
+use App\Entity\Ville;
 use App\Entity\CategorieSocioProfessionnelle;
-
 
 class Locataire
 {
@@ -14,14 +12,13 @@ class Locataire
     private ?string $email;
     private ?string $telephone;
     private ?string $rue;
-    private ?int $salaireMensuel;
     private ?Ville $ville;
 	private ?Impression $leImpression;
 	private ?CategorieSocioProfessionnelle $leCategorieSocioprofessionnelle;
 
 
-	public function __construct(?int $id,?string $nom = null,?string $prenom = null,?string $email = null,?string $telephone = null,
-    ?string $rue = null, ?Ville $ville = null,?Impression $leImpression = null,?CategorieSocioProfessionnelle $leCategorieSocioprofessionnelle = null)
+	public function __construct(?int $id,string $nom = null,string $prenom = null,string $email = null,string $telephone = null,
+    string $rue = null, Ville $ville = null,Impression $leImpression = null,CategorieSocioProfessionnelle $leCategorieSocioprofessionnelle = null)
 	{
 		$this->id = $id;
 		$this->nom = $nom;

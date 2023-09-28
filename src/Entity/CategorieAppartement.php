@@ -1,11 +1,11 @@
 <?php
 namespace App\Entity;
-class Impression
+class CategorieAppartement
 {
-    private ?int $id;
+	private ?int $id;
 	private ?string $libelle;
 
-	public function __construct($id, $libelle = NULL)
+	public function __construct($id, $libelle)
 	{
 		$this->id = $id;
 		$this->libelle = $libelle;

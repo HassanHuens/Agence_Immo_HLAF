@@ -5,6 +5,7 @@ use App\Controller\Controller;
 
 class AccueilController extends Controller
 {
+
     public function __construct()
     {
         parent::__construct();

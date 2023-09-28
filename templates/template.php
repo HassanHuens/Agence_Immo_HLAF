@@ -26,8 +26,27 @@ if (!isset($_SESSION)) {
       </button>
       <?php
       if (isset($_SESSION['profil']) == true) {
-        $ficnav = 'nav' . $_SESSION['profil'] . '.html';
-        include $ficnav;     
+        // meilleure manière de faire
+        // $ficnav = 'nav' . $_SESSION['profil'] . '.html';
+        // include $ficnav;
+        switch ($_SESSION['profil']) {
+          case 1:
+            // profil 1
+            include 'nav1.html';
+            break;
+          case 2:
+            include 'nav2.html';
+            break;
+          case 3:
+            include 'nav3.html';
+            break;
+          case 4:
+            include 'nav4.html';
+            break;
+          default:
+            include 'nav.html';
+            break;
+        }
       } else {
         include 'nav.html';
       }

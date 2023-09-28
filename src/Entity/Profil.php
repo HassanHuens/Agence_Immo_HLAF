@@ -1,6 +1,5 @@
 <?php
 namespace App\Entity;
-
 class Profil
 {
 	private ?int $id;

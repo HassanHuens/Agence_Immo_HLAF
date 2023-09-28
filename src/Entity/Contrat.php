@@ -1,10 +1,6 @@
 <?php
 namespace App\Entity;
 
-use App\Entity\Appartement;
-use App\Entity\Garant;
-use App\Entity\Locataire;
-use App\Entity\TypeLocation;
 use DateTime;
 
 class Contrat
@@ -19,9 +15,8 @@ class Contrat
 	private ?Locataire $leLocataire;
 	private ?Garant $leGarant;
 	private ?Appartement $lAppartement;
-	private ?TypeLocation $leTypeLocation;
 
-	public function __construct(?int $id = null,?DateTime $debut = null,?DateTime $fin = null,?int $montantCharge = null,?int $montantCaution = null,?int $montantLoyerHc = null,?int $salaireLocataire = null,?Locataire $leLocataire = null,?Garant $leGarant = null,?Appartement $lAppartement = null, ?TypeLocation $leTypeLocation = null)
+	public function __construct(?int $id,DateTime $debut,DateTime $fin,int $montantCharge,int $montantCaution,int $montantLoyerHc,int $salaireLocataire,Locataire $leLocataire,Garant $leGarant,Appartement $lAppartement)
 	{
 		$this->id = $id;
 		$this->debut = $debut;
@@ -33,7 +28,6 @@ class Contrat
 		$this->leLocataire = $leLocataire;
 		$this->leGarant = $leGarant;
 		$this->lAppartement = $lAppartement;
-		$this->leTypeLocation = $leTypeLocation;
 	}
 
 
@@ -236,22 +230,4 @@ class Contrat
 
 		return $this;
 	}
-	
-	public function getLeTypeLocation()
-	{
-		return $this->leTypeLocation;
-	}
-
-	/**
-	 * Set the value of lAppartement
-	 *
-	 * @return  self
-	 */ 
-	public function setLeTypeLocation($leTypeLocation)
-	{
-		$this->leTypeLocation = $leTypeLocation;
-
-		return $this;
-	}
 }
-

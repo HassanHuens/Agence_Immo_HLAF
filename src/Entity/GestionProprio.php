@@ -1,6 +1,5 @@
 <?php
 namespace App\Entity;
-
 class GestionProprio
 {
     private ?int $id;

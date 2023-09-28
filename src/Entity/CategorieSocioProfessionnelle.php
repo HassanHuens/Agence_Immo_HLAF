@@ -1,12 +1,11 @@
 <?php
 namespace App\Entity;
-
 class CategorieSocioProfessionnelle
 {
     private ?int $id;
 	private ?string $libelle;
 
-	public function __construct($id, $libelle)
+	public function __construct($id, $libelle = null)
 	{
 		$this->id = $id;
 		$this->libelle = $libelle;

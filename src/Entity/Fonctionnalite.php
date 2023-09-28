@@ -1,6 +1,5 @@
 <?php
 namespace App\Entity;
-
 class Fonctionnalite
 {
 	private ?int $id;

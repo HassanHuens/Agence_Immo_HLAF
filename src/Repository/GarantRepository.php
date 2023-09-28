@@ -9,7 +9,7 @@ use App\Repository\Repository;
 //class dont on a
 class GarantRepository extends Repository
 {
-    public function getLesGarants(): array
+    public function getLesGarant(): array
     {
         // On crée le tableau qui contiendra la liste des garants
         $lesGarants = array();
@@ -27,10 +27,10 @@ class GarantRepository extends Repository
         foreach ($lesEnregs as $enreg) {
             // On crée une instance de Garant en utilisant les données de chaque enregistrement
             $garant = new Garant(
-                $enreg->id,
-                $enreg->nom,
-                $enreg->prenom,
-                $enreg->rue
+                $enreg['id'],
+                $enreg['nom'],
+                $enreg['prenom'],
+                $enreg['rue']
             );
 
             // On ajoute l'instance de Garant dans la liste

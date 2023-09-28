@@ -1,6 +1,5 @@
 <?php
 namespace App\Entity;
-
 class Garant
 {
 	private ?int $id;
@@ -8,7 +7,7 @@ class Garant
     private ?string $prenom;
     private ?string $rue;
 
-	public function __construct(?int $id = null,?string $nom = null,?string $prenom = null,?string $rue = null)
+	public function __construct($id, $nom ,$prenom,$rue)
 	{
 		$this->id = $id;
 		$this->nom = $nom;

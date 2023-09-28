@@ -49,11 +49,11 @@ class LocataireRepository extends Repository
             $lesLocataires = array();
             // on récupère l'objet qui permet de travailler avec la base de données
             $db = $this->dbConnect();
-            $req = $db->prepare("select immo_locataire.id, immo_locataire.nom,prenom, email, immo_ville.insee,telephone, immo_ville.nom as Villenom, immo_ville.code_postal as codePostal, rue, immo_impression.libelle as libImpression, immo_categorie_socioprofessionnelle.libelle as categLib
+            $req = $db->prepare("select immo_locataire.id, immo_locataire.nom,prenom, email, immo_ville.insee,telephone, immo_ville.nom as Villenom, rue, immo_impression.libelle as libImpression, immo_categorie_socioprofessionnelle.libelle as categLib
             from immo_locataire 
             join immo_impression on immo_impression.id = id_impression
             join immo_categorie_socioprofessionnelle on immo_categorie_socioprofessionnelle.id = id_categSocioPro
-            join immo_ville on immo_ville.insee = id_ville");
+            join immo_ville on immo_ville.insee = insee_ville");
             // on demande l'exécution de la requête 
             $req->execute();
             $lesEnregs = $req->fetchAll();
@@ -70,7 +70,6 @@ class LocataireRepository extends Repository
             new Ville(
                 $enreg->insee,
                 $enreg->Villenom,
-                $enreg->codePostal
             ),
             new Impression(
                 $enreg->id,

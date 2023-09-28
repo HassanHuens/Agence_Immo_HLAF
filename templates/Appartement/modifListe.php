@@ -10,11 +10,11 @@
             <label for="lesDem" class="col-lg-4 col-form-label">Choisissez l'appartement à modifier</label>
             <div class="col-sm-12">
                 <!-- liste déroulante -->
-                <select class="form-select form-select-md" onChange="submit();" name="lstApparts">
+                <select class="form-select form-select-md" onChange="submit();" name="lstAppart">
                     <?php foreach ($lesApparts as $unAppart) {
                         $id = $unAppart->getId();
-                        $libelle = $unAppart->getLeTypeAppart()->getLibelle() . ' , superficie : ' . $unAppart->getSuperficie();
-                        if (isset($_POST['lstApparts']) == true && $_POST['lstApparts'] == $id)
+                        $libelle = $unAppart->getTypeAppartement()->getLibelle() . ' , superficie : ' . $unAppart->getSuperficie();
+                        if (isset($_POST['lstAppart']) == true && $_POST['listAppart'] == $id)
                             echo ("<option selected value=$id>$libelle</option>");
                         else
                             echo ("<option value=$id>$libelle</option>");

@@ -2,11 +2,13 @@
 namespace App\Repository;
 
 use PDO;
+use PDOEXCEPTION;
 use App\Entity\Profil;
 use App\Entity\Utilisateur;
 use App\Entity\Fonctionnalite;
 use App\Repository\Repository;
-use PDOException;
+
+//class dont on a besoin (classe Repository.php obligatoire)
 
 class UtilisateurRepository extends Repository
 {
@@ -114,66 +116,33 @@ class UtilisateurRepository extends Repository
         }
         return $ret;
     }
+
     public function getLesUtilisateurs(): array
     {
         // on crèe le tableau qui contiendra la liste des appartements
         $lesUtilisateurs = array();
         // on récupère l'objet qui permet de travailler avec la base de données
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT u.id, nom, prenom, pseudo, p.libelle, mot_de_passe FROM immo_utilisateur AS u JOIN immo_profil AS p ON u.id = p.id;");
+        $req = $db->prepare("select nom, prenom,
+                        profil.libelle
+                        from immo_utilisateur
+                        join immo_profil on profil.id = id_profil");
         // on demande l'exécution de la requête 
         $req->execute();
         $lesEnregs = $req->fetchAll();
         foreach ($lesEnregs  as $enreg) {
             // on crée une instance
             $unUtilisateur = new Utilisateur(
-                $enreg->id,
+                null,
                 $enreg->nom,
                 $enreg->prenom,
-                $enreg->pseudo,
-                $enreg->mot_de_passe,
+                null,
+                null,
                 new Profil(null, $enreg->libelle)
             );
             // on ajout l'instance dans la liste
             array_push($lesUtilisateurs, $unUtilisateur);
         }
         return $lesUtilisateurs;
-    }
-
-    public function fonctTheme($profil): array
-    {
-        // on crèe le tableau qui contiendra la liste des fonctionnalités
-        $lesTheme = array();
-        // on récupère l'objet qui permet de travailler avec la base de données
-        $db = $this->dbConnect();
-        try {
-            // on prépare la requête select
-            $req = $db->prepare("SELECT DISTINCT(theme)
-            from immo_fonctionnalite AS f
-            join immo_profil_fonct AS pf on pf.id_fonct = f.id
-            join immo_profil AS p on pf.id_profil =  p.id 
-            where p.id =:par_profil");
-            // on affecte une valeur au paramètre déclaré dans la requête 
-            $req->bindValue(':par_profil', $profil, PDO::PARAM_INT);
-            // on demande l'exécution de la requête 
-            $req->execute();
-            // on récupere la valeur retournée par la requête 
-            $lesEnregs = $req->fetchAll();
-            foreach ($lesEnregs  as $enreg) {
-                // on crée une instance
-                $uneTheme = new Fonctionnalite(
-                    null,
-                    null,
-                    $enreg->theme,
-                    null
-                );
-                // on ajout l'instance dans la liste
-                array_push($lesTheme, $uneTheme);
-            }
-        } catch (PDOException $e) {
-            die("BDselprofil: erreur accès profil 
-                            <br>Erreur :" . $e->getMessage());
-        }
-        return $lesTheme;
     }
 }
