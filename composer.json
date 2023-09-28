@@ -1,0 +1,14 @@
+{
+    "name": "bts/appli-agence-immo",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "flavien"
+        }
+    ],
+    "require": {}
+}
